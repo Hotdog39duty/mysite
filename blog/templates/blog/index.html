@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Welcome to the Blog</h1>
+<p>Here are the latest blog posts:</p>
+
+<ul>
+    {% for post in posts %}
+    <li>
+        <a href="{% url 'blog:detail' post.id %}">{{ post.title }}</a>
+        <p>Published on {{ post.created_at|date:"F j, Y" }}</p>
+    </li>
+    {% empty %}
+    <p>No blog posts available at the moment.</p>
+    {% endfor %}
+</ul>
+{% endblock %}

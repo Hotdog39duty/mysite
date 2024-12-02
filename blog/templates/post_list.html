@@ -1,0 +1,52 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blog</title>
+    <style>
+        /* Style for the body */
+        body {
+            background-color: blue;
+            font-size: 18px;
+            color: white;
+        }
+        /* Style for the main heading */
+        h1 {
+            font-size: 36px;
+        }
+        /* Style for the list group */
+        .list-group {
+            font-size: 20px;
+        }
+        /* Style for paragraphs */
+        p {
+            font-size: 18px;
+        }
+        /* Style for links */
+        a {
+            font-size: 18px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- Main heading of the blog -->
+    <h1>FLOWINGTHROUGH</h1>
+    <!-- List of blog posts -->
+    <ul class="list-group">
+        {% for post in posts %}
+            <!-- Each blog post item -->
+            <li class="list-group"><a href="{% url 'blog:post_detail' post.id %}">{{ post.title }}</a> by {{ post.author }}</li>
+        {% endfor %}
+    </ul>
+    <!-- Description of the site -->
+    <p>This site is for those who appreciate music, others cannot. You make your
+        own blog about your experience with music, and share it with others.
+        You can make reviews with either stars or personal reviews.
+
+        Please sign up to get started.
+        Good vibes only.
+    </p>
+    <!-- Links for sign up and login -->
+    <a href="{% url 'blog:signup' %}">Sign Up</a> | <a href="{% url 'blog:login' %}">Login</a>
+</body>
+</html>

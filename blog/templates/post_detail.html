@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ post.title }}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-primary">{{ post.title }}</h1>
+        <p>{{ post.content }}</p>
+        <p>Posted by {{ post.author }} on {{ post.created_at }}</p>
+        <a href="{% url 'blog:blog_list' %}" class="btn btn-secondary">Back to Blog</a>
+        
+        <h2>Reviews</h2>
+        {% for review in post.reviews.all %}
+            <p><strong>{{ review.user }}:</strong> {{ review.content }} (Rating: {{ review.rating }})</p>
+        {% empty %}
+            <p>No reviews yet.</p>
+        {% endfor %}
+        
+        {% if user.is_authenticated %}
+            {% with has_review=False %}
+                {% for review in post.reviews.all %}
+                    {% if user == review.user %}
+                        <p>You posted the max reviews</p>
+                        {% with True as has_review %}
+                        {% endwith %}
+                    {% endif %}
+                {% endfor %}
+                {% if not has_review %}
+                    <a href="{% url 'blog:add_review' post.id %}" class="btn btn-primary">Add a Review</a>
+                {% endif %}
+            {% endwith %}
+        {% else %}
+            <p><a href="{% url 'blog:login' %}">Log in</a> to add a review.</p>
+        {% endif %}
+        
+        <nav class="mt-4">
+            <ul class="nav">
+                <li class="nav-item"><a href="{% url 'blog:user_dashboard' %}" class="nav-link">Dashboard</a></li>
+                <li class="nav-item"><a href="{% url 'blog:add_post' %}" class="nav-link">Add Post</a></li>
+                <li class="nav-item"><a href="{% url 'logout' %}" class="nav-link">Logout</a></li>
+            </ul>
+        </nav>
+    </div>
+</body>
+</html>

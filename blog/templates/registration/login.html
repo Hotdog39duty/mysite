@@ -1,0 +1,30 @@
+<!-- 
+
+This HTML file represents the login page for the blog application. It includes a form for users to enter their login credentials and submit them for authentication.
+
+- The form uses the POST method to submit data securely.
+- The `{% csrf_token %}` template tag is included to provide Cross-Site Request Forgery protection.
+- The `{{ form.as_p }}` template tag renders the form fields as paragraph elements.
+- A submit button is provided for users to submit their login information.
+- A link is provided to navigate to the signup page for users who do not have an account.
+
+Dependencies:
+- Django template tags `{% csrf_token %}`, `{{ form.as_p }}`, and `{% url 'blog:signup' %}` are used, which require Django's templating engine.
+-->
+<!-- blog/templates/registration/login.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+    <h1>Login</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Login</button>
+    </form>
+    <a href="{% url 'blog:signup' %}">Sign Up</a>
+</body>
+</html>

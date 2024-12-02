@@ -1,0 +1,30 @@
+<!-- 
+
+This HTML file represents the sign-up page for the blog application. It includes a form for user registration.
+
+- The form uses the POST method to submit data.
+- The `{% csrf_token %}` tag is used to include a CSRF token for security.
+- The `{{ form.as_p }}` renders the form fields as paragraphs.
+- A submit button is provided to submit the form.
+- A link is provided to navigate to the login page.
+
+Dependencies:
+- Django template tags `{% csrf_token %}` and `{% url 'blog:login' %}` are used.
+-->
+<!-- blog/templates/registration/signup.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up</title>
+</head>
+<body>
+    <h1>Sign Up</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Sign Up</button>
+    </form>
+    <a href="{% url 'blog:login' %}">Login</a>
+</body>
+</html>

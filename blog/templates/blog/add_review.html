@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Review</title>
+</head>
+<body>
+{% block content %}
+    <h2>Add a Review for "{{ post.title }}"</h2>
+    <form method="post">
+        {% csrf_token %} <!-- CSRF token for security -->
+        {{ form.as_p }} <!-- Render the form fields as paragraphs -->
+        <button type="submit">Submit Review</button> <!-- Submit button for the form -->
+    </form>
+    <a href="{% url 'blog:post_detail' post.id %}">Back to Post</a> <!-- Link to go back to the post detail page -->
+    {% if messages %} <!-- Check if there are any messages to display -->
+        <ul>
+            {% for message in messages %} <!-- Loop through each message -->
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li> <!-- Display each message with optional tags for styling -->
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endblock content %}
+</body>
+</html>
