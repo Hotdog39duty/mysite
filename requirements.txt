@@ -5,3 +5,5 @@ whitenoise==6.5.0
 django-environ==0.10.0
 pillow==9.3.0
 requests==2.31.0
+sphinx==4.5.4
+sphinx-rtd-theme==1.0.0
