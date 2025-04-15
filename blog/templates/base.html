@@ -6,12 +6,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}My Site{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        header {
+            background: #333;
+            color: #fff;
+            padding: 1rem 0;
+        }
+        header nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+        header nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        main {
+            padding: 2rem;
+        }
+        footer {
+            text-align: center;
+            padding: 1rem 0;
+            background: #333;
+            color: #fff;
+            margin-top: 2rem;
+        }
+    </style>
 </head>
 
 <body>
     <header>
         <nav>
-            <!-- Add navigation here -->
+            <a href="/">Home</a>
+            <a href="/about/">About</a>
+            <a href="/contact/">Contact</a>
         </nav>
     </header>
     <main>
@@ -20,7 +58,7 @@
         {% endblock %}
     </main>
     <footer>
-        <p>&copy; {{ current_year }}</p>
+        <p>&copy; {{ current_year }} My Site. All rights reserved.</p>
     </footer>
 </body>
 </html>

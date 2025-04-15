@@ -1,52 +1,120 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - FlowingThrough</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* Style for the body */
+        /* General reset and body styling */
         body {
-            background-color: blue;
-            font-size: 18px;
-            color: white;
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(to bottom, #1e3c72, #2a5298);
+            color: #f4f4f4;
+            line-height: 1.6;
+            padding: 0 20px;
         }
-        /* Style for the main heading */
+
+        /* Header styling */
         h1 {
-            font-size: 36px;
+            text-align: center;
+            font-size: 3rem;
+            margin-top: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #ffcc00;
         }
-        /* Style for the list group */
+
+        /* Blog post list styling */
         .list-group {
-            font-size: 20px;
+            list-style: none;
+            padding: 0;
+            margin: 20px auto;
+            max-width: 800px;
         }
-        /* Style for paragraphs */
+
+        .list-group li {
+            background: rgba(255, 255, 255, 0.1);
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 8px;
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        .list-group li:hover {
+            transform: scale(1.02);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .list-group a {
+            text-decoration: none;
+            color: #ffcc00;
+            font-weight: bold;
+        }
+
+        .list-group a:hover {
+            text-decoration: underline;
+        }
+
+        /* Paragraph styling */
         p {
-            font-size: 18px;
+            max-width: 800px;
+            margin: 20px auto;
+            text-align: center;
+            font-size: 1.2rem;
         }
-        /* Style for links */
-        a {
-            font-size: 18px;
-            color: white;
+
+        /* Links for sign up and login */
+        .auth-links {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .auth-links a {
+            text-decoration: none;
+            color: #ffcc00;
+            font-weight: bold;
+            margin: 0 10px;
+            padding: 10px 20px;
+            border: 2px solid #ffcc00;
+            border-radius: 5px;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .auth-links a:hover {
+            background: #ffcc00;
+            color: #1e3c72;
         }
     </style>
 </head>
 <body>
     <!-- Main heading of the blog -->
-    <h1>FLOWINGTHROUGH</h1>
+    <h1>FlowingThrough</h1>
+
     <!-- List of blog posts -->
     <ul class="list-group">
         {% for post in posts %}
-            <!-- Each blog post item -->
-            <li class="list-group"><a href="{% url 'blog:post_detail' post.id %}">{{ post.title }}</a> by {{ post.author }}</li>
+            <li class="list-group">
+                <a href="{% url 'blog:post_detail' post.id %}">{{ post.title }}</a> 
+                <span>by {{ post.author }}</span>
+            </li>
         {% endfor %}
     </ul>
+
     <!-- Description of the site -->
-    <p>This site is for those who appreciate music, others cannot. You make your
+    <p>
+        This site is for those who appreciate music, others cannot. You make your
         own blog about your experience with music, and share it with others.
         You can make reviews with either stars or personal reviews.
-
-        Please sign up to get started.
-        Good vibes only.
+        <br><br>
+        Please sign up to get started. Good vibes only.
     </p>
+
     <!-- Links for sign up and login -->
-    <a href="{% url 'blog:signup' %}">Sign Up</a> | <a href="{% url 'blog:login' %}">Login</a>
+    <div class="auth-links">
+        <a href="{% url 'blog:signup' %}">Sign Up</a>
+        <a href="{% url 'blog:login' %}">Login</a>
+    </div>
 </body>
-</html>
+</html></li>
